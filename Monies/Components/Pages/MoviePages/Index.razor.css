@@ -4,6 +4,7 @@
     justify-content:space-between;
     align-items:center;
 }
+
 .controls a, .controls h1
 {
     margin: 8px 16px 0;
@@ -12,4 +13,14 @@
 .controls select
 {
     width:48px;
+}
+
+::deep .movie-title
+{
+    width:50%;
+}
+
+::deep .release-date, .genre
+{
+    width:25%;
 }

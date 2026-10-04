@@ -29,27 +29,29 @@
     </div>
 </div>
 
-<QuickGrid Class="table" Items="context.Movie" Pagination="pagination">
-    @* <PropertyColumn Property="movie => movie.Title" /> *@
-    <TemplateColumn Context="movie" 
-                    Title="Название фильма"    
-                    Sortable="true"
-                    SortBy="sortBy"
-    >
-        <a href="@($"movies/details?id={movie.ID}")">@movie.Title</a>
-    </TemplateColumn>
-    <PropertyColumn Property="movie => movie.ReleaseDate" Sortable="true" />
-    <PropertyColumn Property="movie => movie.Genre" />
-    @*<PropertyColumn Property="movie => movie.URL" />
-    <PropertyColumn Property="movie => movie.Poster" />*@
+<div>
+    <QuickGrid Class="table" Items="context.Movie" Pagination="pagination">
+        @* <PropertyColumn Property="movie => movie.Title" /> *@
+        <TemplateColumn Context="movie"
+                        Title="Название фильма"
+                        Class="movie-title"
+                        Sortable="true"
+                        SortBy="sortBy">
+            <a href="@($"movies/details?id={movie.ID}")">@movie.Title</a>
+        </TemplateColumn>
+        <PropertyColumn Class="release-date" Property="movie => movie.ReleaseDate" Sortable="true" />
+        <PropertyColumn Class="genre" Property="movie => movie.Genre" />
+        @*<PropertyColumn Property="movie => movie.URL" />
+        <PropertyColumn Property="movie => movie.Poster" />*@
 
-    @* <TemplateColumn Context="movie">
+        @* <TemplateColumn Context="movie">
         <a href="@($"movies/edit?id={movie.ID}")">Edit</a>
-		<a href="@($"movies/details?id={movie.ID}")">Details</a>|
-		<a href="@($"movies/delete?id={movie.ID}")">Delete</a
-    </TemplateColumn> *@
-</QuickGrid>
-<Paginator State="pagination" />
+        <a href="@($"movies/details?id={movie.ID}")">Details</a>|
+        <a href="@($"movies/delete?id={movie.ID}")">Delete</a
+        </TemplateColumn> *@
+    </QuickGrid>
+    <Paginator State="pagination" />
+</div>
 
 @code {
     private MoviesContext context = default!;
